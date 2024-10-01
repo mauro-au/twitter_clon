@@ -10,7 +10,7 @@
 
 require 'faker'
 
-100.times do
+45.times do
   Tweet.create(
     username: Faker::Internet.username,
     description: Faker::Lorem.words(number: rand(40..60)).join(' ')

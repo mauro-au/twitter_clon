@@ -1,27 +1,32 @@
+<h1 class="text-center text-light my-5">Tweets</h1>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Tweets</h1>
-<%= link_to "New tweet", new_tweet_path %>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to "New tweet", new_tweet_path, class: "btn btn-success" %>
+  </div> 
 
-<br>
-
-<%= form_with url: tweets_path, method: :get do |form| %>
-  <%= form.text_field :query_text, placeholder: 'Buscar palabra o ID', value: params[:query_text] %>
-  <%= form.submit 'Buscar' %>
-<% end %>
-
+  <div class="col-md-6">
+    <%= form_with url: tweets_path, method: :get, class: "input-group mb-3" do |form| %>
+      <%= form.text_field :query_text, placeholder: 'Buscar palabra o ID', value: params[:query_text], class: "form-control" %>
+      <%= form.submit 'Buscar', class: "btn btn-primary" %>
+    <% end %>
+  </div> 
+</div> 
 <br>
 
 <div id="tweets">
   <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
+    <div class="card text-bg-dark mb-3">
+      <div class="card-body">
+        <%= render tweet %>
+        <%= link_to "Mostrar tweet", tweet, class: "btn btn-primary mt-4" %>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<br>
-<br>
-
-<%== pagy_nav(@pagy) if @tweets.any? %>
+<div class="pag-bar my-5 d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+</div>

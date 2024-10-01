@@ -1,10 +1,17 @@
+<h1 class="text-center text-light mt-5">Tweets</h1>
+
 <p style="color: green"><%= notice %></p>
+<br>
 
-<%= render @tweet %>
+<%= link_to "< Volver", tweets_path, class: "btn btn-secondary my-4" %>
 
-<div>
-  <%= link_to "Edit this tweet", edit_tweet_path(@tweet) %> |
-  <%= link_to "Back to tweets", tweets_path %>
+<div class="card text-bg-dark mb-5 p-3">
+  <div class="card-body">
+    <%= render @tweet %>
+  </div>
+</div>
 
-  <%= button_to "Destroy this tweet", @tweet, method: :delete %>
+<div class="d-flex justify-content-between">
+  <%= link_to "Editar Tweet", edit_tweet_path(@tweet), class: "btn btn-primary" %>
+  <%= button_to "Eliminar Tweet", @tweet, method: :delete, class: "btn btn-danger" %>
 </div>
